@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author HP
  */
-public class crearProducto extends javax.swing.JInternalFrame {
+public class CrearProducto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form crearProducto
      */
-    public crearProducto() {
+    public CrearProducto() {
         initComponents();
+        crearCombo();
     }
 
     /**
@@ -40,8 +41,10 @@ public class crearProducto extends javax.swing.JInternalFrame {
         jTextPrecio = new javax.swing.JTextField();
         jTextStock = new javax.swing.JTextField();
         jBagregar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jComboCategoria = new javax.swing.JComboBox<>();
+
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(550, 400));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("INGRESAR PRODUCTOS");
@@ -63,10 +66,6 @@ public class crearProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("LIMPIAR");
-
-        jComboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,8 +78,6 @@ public class crearProducto extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
                         .addComponent(jBagregar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -125,9 +122,7 @@ public class crearProducto extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(jComboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBagregar)
-                    .addComponent(jButton2))
+                .addComponent(jBagregar)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -135,8 +130,7 @@ public class crearProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
-        // TODO add your handling code here:
-        //Home.listaProducto.add()
+      
          //validar que el usuario elija una categoria
         if (jComboCategoria.getSelectedIndex() == 0) {
 
@@ -144,35 +138,34 @@ public class crearProducto extends javax.swing.JInternalFrame {
         //validar que el usuario complete el detalle     
         } else if (jTextDescripcion.getText().isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "El Campo detalle no puede quedar vacio");
+            JOptionPane.showMessageDialog(this, "El Campo descripcion no puede quedar vacio");
         } else {
         //-verificar la entrada de datos-
             try {
-        //Capturo los datos que ingresa el usuario
-                 
+        //Capturo los datos que ingresa el usuario             
                 String detalle = jTextDescripcion.getText();
                 int codigo = Integer.parseInt(jTextCodigo.getText());
                 double precio = Double.parseDouble(jTextPrecio.getText());
                 int stock = Integer.parseInt(jTextStock.getText());
-        //El metodo recibe un Objeto-Producto y lo agrega productos al array
+                
+        //El metodo recibe un Objeto-Producto y lo agrega productos al array   
                 Producto prod = new Producto(codigo,detalle,precio,stock,Categoria.LIMPIEZA);        
                 agregarProducto(prod);
-
-        //Actualizar Categorias, detalle y precio.  
+        //Actualizar Categorias, detalle y precio. 
                 jComboCategoria.setSelectedIndex(0);
-                
+                jTextCodigo.setText("");
+                jTextDescripcion.setText("");
+                jTextPrecio.setText("");          
         //Capturo la excepcion     
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "El precio solo acepta numeros.\nEl campo no puede queda vacio");
+                JOptionPane.showMessageDialog(this, "Solo acepta numeros validos.\nEl campo no puede queda vacio");
             }
-        }
-        
+        }    
     }//GEN-LAST:event_jBagregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBagregar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -188,4 +181,11 @@ public class crearProducto extends javax.swing.JInternalFrame {
     private void agregarProducto(Producto producto){
         Home.listaProducto.add(producto);  
     };
+    
+    private void crearCombo(){
+        jComboCategoria.addItem("selecionar-categoria");
+        jComboCategoria.addItem("COMESTIBLE");
+        jComboCategoria.addItem("LIMPIEZA");
+        jComboCategoria.addItem("PERFUMERIA");
+    }
 }

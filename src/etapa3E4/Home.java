@@ -43,6 +43,7 @@ public class Home extends javax.swing.JFrame {
         jMenuPrecio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 500));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -108,8 +109,7 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNombreActionPerformed
-        // TODO add your handling code here:
-
+       
         escritorio.removeAll();
         escritorio.repaint();
         BusquedaXnombre bn = new BusquedaXnombre();
@@ -119,10 +119,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuNombreActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-         escritorio.removeAll();
+      
+        escritorio.removeAll();
         escritorio.repaint();
-        crearProducto bn = new crearProducto();
+        CrearProducto bn = new CrearProducto();
         bn.setVisible(true);
         escritorio.add(bn);
         escritorio.moveToFront(bn);

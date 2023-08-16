@@ -58,7 +58,7 @@ public class BusquedaXnombre extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(500, 400));
 
         jLabel1.setText("LISTADO POR NOMBRE");
 
