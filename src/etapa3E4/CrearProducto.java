@@ -155,6 +155,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                 jComboCategoria.setSelectedIndex(0);
                 jTextCodigo.setText("");
                 jTextDescripcion.setText("");
+                jTextStock.setText("");
                 jTextPrecio.setText("");          
         //Capturo la excepcion     
             } catch (NumberFormatException e) {
