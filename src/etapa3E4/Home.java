@@ -87,6 +87,11 @@ public class Home extends javax.swing.JFrame {
         jMenu2.add(jMenuNombre);
 
         jMenuPrecio.setText("Precio");
+        jMenuPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrecioActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuPrecio);
 
         jMenuBar1.add(jMenu2);
@@ -142,6 +147,15 @@ public class Home extends javax.swing.JFrame {
         escritorio.add(ventana);
         escritorio.moveToFront(ventana);
     }//GEN-LAST:event_jMenuRubloActionPerformed
+
+    private void jMenuPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrecioActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaXprecio ventana = new BusquedaXprecio();
+        ventana.setVisible(true);
+        escritorio.add(ventana);
+        escritorio.moveToFront(ventana);
+    }//GEN-LAST:event_jMenuPrecioActionPerformed
 
     /**
      * @param args the command line arguments
