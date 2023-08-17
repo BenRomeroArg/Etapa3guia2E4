@@ -130,38 +130,53 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
-      
-         //validar que el usuario elija una categoria
+
+        //validar que el usuario elija una categoria
         if (jComboCategoria.getSelectedIndex() == 0) {
 
             JOptionPane.showMessageDialog(this, "Debe seleccionar una categoria");
-        //validar que el usuario complete el detalle     
+            //validar que el usuario complete el detalle     
         } else if (jTextDescripcion.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "El Campo descripcion no puede quedar vacio");
         } else {
-        //-verificar la entrada de datos-
+            //-verificar la entrada de datos-
             try {
-        //Capturo los datos que ingresa el usuario             
+                //Capturo los datos que ingresa el usuari
+                //
+                int selectCombo = jComboCategoria.getSelectedIndex();
+                Categoria cat = Categoria.COMESTIBLE;
+                
+                switch(selectCombo){
+
+                    case 2: 
+                        cat = Categoria.LIMPIEZA;
+                        break;
+                    case 3:
+                    cat = Categoria.PERFUMERIA;
+                    break;
+                   
+                }
+
                 String detalle = jTextDescripcion.getText();
                 int codigo = Integer.parseInt(jTextCodigo.getText());
                 double precio = Double.parseDouble(jTextPrecio.getText());
                 int stock = Integer.parseInt(jTextStock.getText());
-                
-        //El metodo recibe un Objeto-Producto y lo agrega productos al array   
-                Producto prod = new Producto(codigo,detalle,precio,stock,Categoria.LIMPIEZA);        
+
+                //El metodo recibe un Objeto-Producto y lo agrega productos al array   
+                Producto prod = new Producto(codigo, detalle, precio, stock, cat);
                 agregarProducto(prod);
-        //Actualizar Categorias, detalle y precio. 
+                //Actualizar Categorias, detalle y precio. 
                 jComboCategoria.setSelectedIndex(0);
                 jTextCodigo.setText("");
                 jTextDescripcion.setText("");
                 jTextStock.setText("");
-                jTextPrecio.setText("");          
-        //Capturo la excepcion     
+                jTextPrecio.setText("");
+                //Capturo la excepcion     
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Solo acepta numeros validos.\nEl campo no puede queda vacio");
             }
-        }    
+        }
     }//GEN-LAST:event_jBagregarActionPerformed
 
 
@@ -179,14 +194,17 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextPrecio;
     private javax.swing.JTextField jTextStock;
     // End of variables declaration//GEN-END:variables
-    private void agregarProducto(Producto producto){
-        Home.listaProducto.add(producto);  
-    };
+    private void agregarProducto(Producto producto) {
+        Home.listaProducto.add(producto);
+    }
+
+    ;
     
-    private void crearCombo(){
+    private void crearCombo() {
+
         jComboCategoria.addItem("selecionar-categoria");
-        jComboCategoria.addItem("COMESTIBLE");
-        jComboCategoria.addItem("LIMPIEZA");
-        jComboCategoria.addItem("PERFUMERIA");
+        jComboCategoria.addItem(Categoria.COMESTIBLE.toString());
+        jComboCategoria.addItem(Categoria.LIMPIEZA.toString());
+        jComboCategoria.addItem(Categoria.PERFUMERIA.toString());
     }
 }
