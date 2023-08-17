@@ -117,30 +117,30 @@ public class Home extends javax.swing.JFrame {
        
         escritorio.removeAll();
         escritorio.repaint();
-        BusquedaXnombre bn = new BusquedaXnombre();
-        bn.setVisible(true);
-        escritorio.add(bn);
-        escritorio.moveToFront(bn);
+        BusquedaXnombre ventana = new BusquedaXnombre();
+        ventana.setVisible(true);
+        escritorio.add(ventana);
+        escritorio.moveToFront(ventana);
     }//GEN-LAST:event_jMenuNombreActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
       
         escritorio.removeAll();
         escritorio.repaint();
-        CrearProducto bn = new CrearProducto();
-        bn.setVisible(true);
-        escritorio.add(bn);
-        escritorio.moveToFront(bn);
+        CrearProducto ventana = new CrearProducto();
+        ventana.setVisible(true);
+        escritorio.add(ventana);
+        escritorio.moveToFront(ventana);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuRubloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRubloActionPerformed
         
         escritorio.removeAll();
         escritorio.repaint();
-        BusquedaXrublo bn = new BusquedaXrublo();
-        bn.setVisible(true);
-        escritorio.add(bn);
-        escritorio.moveToFront(bn);
+        BusquedaXrublo ventana = new BusquedaXrublo();
+        ventana.setVisible(true);
+        escritorio.add(ventana);
+        escritorio.moveToFront(ventana);
     }//GEN-LAST:event_jMenuRubloActionPerformed
 
     /**
