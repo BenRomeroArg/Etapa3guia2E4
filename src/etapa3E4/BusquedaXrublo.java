@@ -97,7 +97,6 @@ public class BusquedaXrublo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboCatMouseClicked
-        //Falta ajustar busqueda
         borrarFila();
         String selectCombo = (String) jComboCat.getSelectedItem();
         for (Producto producto : Home.listaProducto) {
@@ -110,10 +109,9 @@ public class BusquedaXrublo extends javax.swing.JInternalFrame {
                     producto.getRublo()
                 });
             }
-
+        }
     }//GEN-LAST:event_jComboCatMouseClicked
 
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboCat;
